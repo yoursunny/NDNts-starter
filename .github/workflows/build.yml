@@ -1,0 +1,26 @@
+name: build
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - name: Install NFD
+        run: |
+          sudo add-apt-repository ppa:named-data/ppa-dev
+          sudo apt install nfd
+      - uses: actions/checkout@v2
+      - run: npm install
+      - run: node producer.mjs &
+        env:
+          NDNTS_NFDREG: 1
+      - name: consumer.mjs
+        run: |
+          A=$RANDOM
+          B=$RANDOM
+          echo $A + $B = $(node consumer.mjs $A $B)
+      - run: node bulk.mjs
+      - run: pkill -f producer.mjs
