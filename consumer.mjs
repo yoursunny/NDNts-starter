@@ -17,7 +17,7 @@ const [x, y] = process.argv.slice(2);
 
   try {
     // Send the Interest, and wait for Data to come back.
-    const data = await endpoint.consume(interest);
+    const data = await endpoint.consume(interest, { retx: 100 });
 
     // Print the Data payload.
     process.stdout.write(data.content);

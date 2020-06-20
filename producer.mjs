@@ -36,6 +36,9 @@ import { Name, Data } from "@ndn/packet";
     data.freshnessPeriod = 1000;
     data.content = new TextEncoder().encode(`${sum}\n`);
 
+    // Simulate 100 milliseconds processing delay.
+    await new Promise((r) => setTimeout(r, 100));
+
     // Sending the Data is as simple as returning it from the function.
     return data;
   },
