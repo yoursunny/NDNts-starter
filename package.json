@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "webpack",
+    "lint": "xo --fix",
+    "serve": "webpack-dev-server"
+  },
+  "dependencies": {
+    "@ndn/autoconfig": "https://ndnts-nightly.ndn.today/autoconfig.tgz",
+    "@ndn/endpoint": "https://ndnts-nightly.ndn.today/endpoint.tgz",
+    "@ndn/packet": "https://ndnts-nightly.ndn.today/packet.tgz"
+  },
+  "devDependencies": {
+    "@yoursunny/xo-config": "^0.33.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
