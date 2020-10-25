@@ -3,7 +3,7 @@
   "scripts": {
     "build": "webpack",
     "lint": "xo --fix",
-    "serve": "webpack-dev-server"
+    "serve": "webpack serve"
   },
   "dependencies": {
     "@ndn/autoconfig": "https://ndnts-nightly.ndn.today/autoconfig.tgz",
@@ -11,9 +11,9 @@
     "@ndn/packet": "https://ndnts-nightly.ndn.today/packet.tgz"
   },
   "devDependencies": {
-    "@yoursunny/xo-config": "^0.33.0",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12",
+    "@yoursunny/xo-config": "^0.34.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^4.1.0",
     "webpack-dev-server": "^3.11.0"
   }
 }
