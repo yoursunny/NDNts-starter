@@ -10,7 +10,7 @@ module.exports = {
     path: path.resolve(__dirname, "public"),
   },
   devServer: {
-    contentBase: path.join(__dirname, "public"),
+    contentBase: path.resolve(__dirname, "public"),
     disableHostCheck: true,
     port: 3333,
   },
