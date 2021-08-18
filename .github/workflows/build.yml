@@ -3,17 +3,19 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
-          node-version: 14.x
-      - name: Install NFD
+          node-version: 16
+      - name: install NFD
         run: |
-          sudo add-apt-repository ppa:named-data/ppa-dev
+          sudo add-apt-repository ppa:named-data/ppa
           sudo apt install nfd
       - uses: actions/checkout@v2
       - run: npm install
+      - name: check code style
+        run: npm run lint && [[ $(git status --porcelain | tee /dev/stderr | wc -l) -eq 0 ]]
       - run: node producer.mjs &
         env:
           NDNTS_NFDREG: 1
