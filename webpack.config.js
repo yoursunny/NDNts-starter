@@ -1,10 +1,10 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 const path = require("path");
 
-/** @return {import("webpack").Configuration} */
+/** @type {import("webpack").Configuration} */
 module.exports = {
-  entry: "./src/main.js",
+  mode: "production",
   devtool: "source-map",
+  entry: "./src/main.js",
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "public"),

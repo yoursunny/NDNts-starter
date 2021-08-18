@@ -1,4 +1,4 @@
-import { connectToTestbed } from "@ndn/autoconfig";
+import { connectToNetwork } from "@ndn/autoconfig";
 import { Endpoint } from "@ndn/endpoint";
 import { AltUri, Interest, Name } from "@ndn/packet";
 
@@ -43,9 +43,9 @@ async function ping(evt) {
 }
 
 async function main() {
-  // Connect to the NDN testbed in one line.
-  // This function queries the NDN-FCH service, and connects to the nearest testbed router.
-  await connectToTestbed();
+  // Connect to the global NDN network in one line.
+  // This function queries the NDN-FCH service, and connects to the nearest router.
+  await connectToNetwork();
 
   // Enable the form after connection was successful.
   document.querySelector("#app_button").disabled = false;
