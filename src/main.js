@@ -16,7 +16,7 @@ async function ping(evt) {
 
     const endpoint = new Endpoint();
     // Generate a random number as initial sequence number.
-    let seqNum = Math.floor(Math.random() * 99999999);
+    let seqNum = Math.trunc(Math.random() * 1e8);
     for (let i = 0; i < 4; ++i) {
       ++seqNum;
       // Construct an Interest with prefix + seqNum.

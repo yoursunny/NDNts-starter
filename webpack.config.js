@@ -9,9 +9,14 @@ module.exports = {
     filename: "bundle.js",
     path: path.resolve(__dirname, "public"),
   },
+  performance: {
+    hints: false,
+  },
   devServer: {
-    contentBase: path.resolve(__dirname, "public"),
-    disableHostCheck: true,
+    static: {
+      directory: path.resolve(__dirname, "public"),
+    },
+    allowedHosts: "all",
     port: 3333,
   },
 };
