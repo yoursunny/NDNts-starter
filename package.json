@@ -3,12 +3,13 @@
   "scripts": {
     "lint": "xo --fix"
   },
+  "packageManager": "pnpm@6.32.3",
   "dependencies": {
     "@ndn/cli-common": "https://ndnts-nightly.ndn.today/cli-common.tgz",
     "@ndn/endpoint": "https://ndnts-nightly.ndn.today/endpoint.tgz",
     "@ndn/packet": "https://ndnts-nightly.ndn.today/packet.tgz"
   },
   "devDependencies": {
-    "@yoursunny/xo-config": "^0.40.1"
+    "@yoursunny/xo-config": "^0.48.0"
   }
 }

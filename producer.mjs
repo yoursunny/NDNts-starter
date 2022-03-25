@@ -2,7 +2,6 @@ import { openUplinks } from "@ndn/cli-common";
 import { Endpoint } from "@ndn/endpoint";
 import { Data } from "@ndn/packet";
 
-(async () => {
 // openUplinks() creates a connection to the "uplink", in this case the local NFD forwarder.
 // It returns a Promise, so remember to await it.
 await openUplinks();
@@ -44,4 +43,5 @@ endpoint.produce("/add", async (interest) => {
 },
 { concurrency: 10 },
 );
-})();
+
+console.log("Producer running, press CTRL+C to stop");

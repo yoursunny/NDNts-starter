@@ -2,14 +2,13 @@ import { closeUplinks, openUplinks } from "@ndn/cli-common";
 import { Endpoint } from "@ndn/endpoint";
 import { Interest } from "@ndn/packet";
 
-// Parse x and y from command line arguments.
-const [x, y] = process.argv.slice(2);
-
-(async () => {
 // Connect to NFD.
 await openUplinks();
 
 const endpoint = new Endpoint();
+
+// Parse x and y from command line arguments.
+const [x, y] = process.argv.slice(2);
 
 // Make an Interest packet, asking the producer to compute x+y.
 const interest = new Interest(`/add/${x}/${y}`);
@@ -28,4 +27,3 @@ try {
 
 // Disconnect from NFD, so that Node.js can exit normally.
 closeUplinks();
-})();
