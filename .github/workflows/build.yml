@@ -5,24 +5,27 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
-          node-version: 16
-      - name: install NFD
+          node-version: 18
+      - name: Install NFD
         run: |
           sudo add-apt-repository ppa:named-data/ppa
           sudo apt install nfd
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: npm install
-      - name: check code style
-        run: npm run lint && [[ $(git status --porcelain | tee /dev/stderr | wc -l) -eq 0 ]]
-      - run: node producer.mjs &
+      - name: Check code style
+        run: npm run lint && git diff --exit-code
+      - name: Start producer
+        run: node producer.mjs &
         env:
           NDNTS_NFDREG: 1
-      - name: consumer.mjs
+      - name: Run single consumer
         run: |
           A=$RANDOM
           B=$RANDOM
           echo $A + $B = $(node consumer.mjs $A $B)
-      - run: node bulk.mjs
-      - run: pkill -f producer.mjs
+      - name: Run bulk consumer
+        run: node bulk.mjs
+      - name: Stop producer
+        run: pkill -f producer.mjs
