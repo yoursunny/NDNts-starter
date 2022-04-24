@@ -5,10 +5,10 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
-          node-version: 16
-      - uses: actions/checkout@v2
+          node-version: 18
+      - uses: actions/checkout@v3
       - run: npm install
       - run: npm run build
-      - run: npm run lint
+      - run: npm run lint && git diff --exit-code
