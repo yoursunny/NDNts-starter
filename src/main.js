@@ -1,6 +1,7 @@
 import { connectToNetwork } from "@ndn/autoconfig";
 import { Endpoint } from "@ndn/endpoint";
 import { AltUri, Interest, Name } from "@ndn/packet";
+import { delay } from "@ndn/util";
 
 async function ping(evt) {
   evt.preventDefault();
@@ -34,7 +35,7 @@ async function ping(evt) {
       }
 
       // Delay 500ms before sending the next Interest.
-      await new Promise((r) => setTimeout(r, 500));
+      await delay(500);
     }
   } finally {
     // Re-enable the submit button.
@@ -47,7 +48,7 @@ async function main() {
   // This function queries the NDN-FCH service, and connects to the nearest router.
   await connectToNetwork();
 
-  // Enable the form after connection was successful.
+  // Enable the form after connection succeeded.
   document.querySelector("#app_button").disabled = false;
   document.querySelector("#app_form").addEventListener("submit", ping);
 }
