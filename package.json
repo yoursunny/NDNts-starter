@@ -1,15 +1,15 @@
 {
   "private": true,
   "scripts": {
-    "lint": "xo --fix"
+    "lint": "xo-yoursunny --fix"
   },
-  "packageManager": "pnpm@6.32.9",
+  "packageManager": "pnpm@8.15.4+sha256.cea6d0bdf2de3a0549582da3983c70c92ffc577ff4410cbf190817ddc35137c2",
   "dependencies": {
     "@ndn/cli-common": "https://ndnts-nightly.ndn.today/cli-common.tgz",
     "@ndn/endpoint": "https://ndnts-nightly.ndn.today/endpoint.tgz",
     "@ndn/packet": "https://ndnts-nightly.ndn.today/packet.tgz"
   },
   "devDependencies": {
-    "@yoursunny/xo-config": "^0.48.1"
+    "@yoursunny/xo-config": "^0.57.2"
   }
 }
