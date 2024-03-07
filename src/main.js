@@ -1,5 +1,5 @@
 import { connectToNetwork } from "@ndn/autoconfig";
-import { Endpoint } from "@ndn/endpoint";
+import { consume } from "@ndn/endpoint";
 import { AltUri, Interest, Name } from "@ndn/packet";
 import { delay } from "@ndn/util";
 
@@ -15,7 +15,6 @@ async function ping(evt) {
     const $log = document.querySelector("#app_log");
     $log.textContent = `ping ${AltUri.ofName(prefix)}\n`;
 
-    const endpoint = new Endpoint();
     // Generate a random number as initial sequence number.
     let seqNum = Math.trunc(Math.random() * 1e8);
     for (let i = 0; i < 4; ++i) {
@@ -26,7 +25,7 @@ async function ping(evt) {
       const t0 = Date.now();
       try {
         // Retrieve Data and compute round-trip time.
-        const data = await endpoint.consume(interest);
+        const data = await consume(interest);
         const rtt = Date.now() - t0;
         $log.textContent += `\n${AltUri.ofName(data.name)} rtt=${rtt}ms`;
       } catch {

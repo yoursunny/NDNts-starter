@@ -1,11 +1,12 @@
 {
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "webpack",
-    "lint": "xo --fix",
+    "lint": "xo-yoursunny --fix",
     "serve": "webpack serve"
   },
-  "packageManager": "pnpm@8.6.3",
+  "packageManager": "pnpm@8.15.4+sha256.cea6d0bdf2de3a0549582da3983c70c92ffc577ff4410cbf190817ddc35137c2",
   "dependencies": {
     "@ndn/autoconfig": "https://ndnts-nightly.ndn.today/autoconfig.tgz",
     "@ndn/endpoint": "https://ndnts-nightly.ndn.today/endpoint.tgz",
@@ -13,9 +14,9 @@
     "@ndn/util": "https://ndnts-nightly.ndn.today/util.tgz"
   },
   "devDependencies": {
-    "@yoursunny/xo-config": "0.54.0",
-    "webpack": "^5.87.0",
+    "@yoursunny/xo-config": "0.57.2",
+    "webpack": "^5.90.3",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
+    "webpack-dev-server": "^5.0.2"
   }
 }
