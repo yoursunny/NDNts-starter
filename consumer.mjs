@@ -1,11 +1,9 @@
 import { closeUplinks, openUplinks } from "@ndn/cli-common";
-import { Endpoint } from "@ndn/endpoint";
+import { consume } from "@ndn/endpoint";
 import { Interest } from "@ndn/packet";
 
 // Connect to NFD.
 await openUplinks();
-
-const endpoint = new Endpoint();
 
 // Parse x and y from command line arguments.
 const [x, y] = process.argv.slice(2);
@@ -16,7 +14,7 @@ interest.mustBeFresh = true;
 
 try {
   // Send the Interest, and wait for Data to come back.
-  const data = await endpoint.consume(interest, { retx: 100 });
+  const data = await consume(interest, { retx: 100 });
 
   // Print the Data payload.
   process.stdout.write(data.content);

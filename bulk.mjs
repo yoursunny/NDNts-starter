@@ -1,9 +1,8 @@
 import { closeUplinks, openUplinks } from "@ndn/cli-common";
-import { Endpoint } from "@ndn/endpoint";
+import { consume } from "@ndn/endpoint";
 import { Interest } from "@ndn/packet";
 
 await openUplinks();
-const endpoint = new Endpoint();
 
 const interests = [];
 for (let i = 0; i < 100; ++i) {
@@ -16,7 +15,7 @@ for (let i = 0; i < 100; ++i) {
 
 const t0 = Date.now();
 const settled = await Promise.allSettled(
-  interests.map((interest) => endpoint.consume(interest, { retx: 5 })),
+  interests.map((interest) => consume(interest, { retx: 5 })),
 );
 const t1 = Date.now();
 const nFulfilled = settled.filter(({ status }) => status === "fulfilled").length;

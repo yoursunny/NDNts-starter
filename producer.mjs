@@ -1,21 +1,16 @@
 import { openUplinks } from "@ndn/cli-common";
-import { Endpoint } from "@ndn/endpoint";
+import { produce } from "@ndn/endpoint";
 import { Data } from "@ndn/packet";
 
 // openUplinks() creates a connection to the "uplink", in this case the local NFD forwarder.
 // It returns a Promise, so remember to await it.
 await openUplinks();
 
-// Endpoint is a centerpiece of NDNts. You can use it to create a producer or a consumer.
-// It is similar to, but more powerful than, "face" in other NDN libraries.
-// You'll soon see some of its powers.
-const endpoint = new Endpoint();
-
-// endpoint.produce() creates a producer.
+// produce() creates a producer.
 // The first argument is the name prefix.
 // The second argument is a callback function that is invoked for each incoming Interest;
 // this must be an async function that returns a Promise.
-endpoint.produce("/add", async (interest) => {
+produce("/add", async (interest) => {
   console.log(`Got Interest ${interest.name}`);
   // This producer is a calculator. It expects Interest name to have three
   // components: "add", x, and y. If it's not, reject the Interest.
