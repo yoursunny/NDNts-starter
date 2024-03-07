@@ -1,25 +1,26 @@
 name: build
-on: [push]
-
+on:
+  push:
+permissions: {}
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
       - name: Install NFD
         run: |
-          sudo add-apt-repository ppa:named-data/ppa
-          sudo apt install nfd
-      - uses: actions/checkout@v3
-      - run: npm install
+          echo "deb [arch=amd64 trusted=yes] https://nfd-nightly-apt.ndn.today/ubuntu jammy main" \
+            | sudo tee /etc/apt/sources.list.d/nfd-nightly.list
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends nfd
+      - uses: actions/checkout@v4
+      - run: corepack pnpm install
       - name: Check code style
-        run: npm run lint && git diff --exit-code
+        run: corepack pnpm run lint && git diff --exit-code
       - name: Start producer
         run: node producer.mjs &
-        env:
-          NDNTS_NFDREG: 1
       - name: Run single consumer
         run: |
           A=$RANDOM
