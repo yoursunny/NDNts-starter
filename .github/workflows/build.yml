@@ -1,14 +1,16 @@
 name: build
-on: [push]
-
+on:
+  push:
+permissions: {}
 jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - uses: actions/checkout@v3
-      - run: npm install
-      - run: npm run build
-      - run: npm run lint && git diff --exit-code
+      - uses: actions/checkout@v4
+      - run: corepack pnpm install
+      - run: corepack pnpm run build
+      - name: Check code style
+        run: corepack pnpm run lint && git diff --exit-code
