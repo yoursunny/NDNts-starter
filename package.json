@@ -6,17 +6,16 @@
     "lint": "xo-yoursunny --fix",
     "serve": "webpack serve"
   },
-  "packageManager": "pnpm@8.15.4+sha256.cea6d0bdf2de3a0549582da3983c70c92ffc577ff4410cbf190817ddc35137c2",
   "dependencies": {
-    "@ndn/autoconfig": "https://ndnts-nightly.ndn.today/autoconfig.tgz",
-    "@ndn/endpoint": "https://ndnts-nightly.ndn.today/endpoint.tgz",
-    "@ndn/packet": "https://ndnts-nightly.ndn.today/packet.tgz",
-    "@ndn/util": "https://ndnts-nightly.ndn.today/util.tgz"
+    "@ndn/autoconfig": "0.0.20260427",
+    "@ndn/endpoint": "0.0.20260427",
+    "@ndn/packet": "0.0.20260427",
+    "@ndn/util": "0.0.20260427"
   },
   "devDependencies": {
-    "@yoursunny/xo-config": "0.57.2",
-    "webpack": "^5.90.3",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.0.2"
+    "@yoursunny/xo-config": "0.1002.0",
+    "webpack": "^5.107.2",
+    "webpack-cli": "^7.0.2",
+    "webpack-dev-server": "^5.2.4"
   }
 }

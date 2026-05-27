@@ -4,13 +4,14 @@ on:
 permissions: {}
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
         with:
-          node-version: 20
-      - uses: actions/checkout@v4
-      - run: corepack pnpm install
-      - run: corepack pnpm run build
+          node-version: 24
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - run: npm install
+      - run: npm run build
       - name: Check code style
-        run: corepack pnpm run lint && git diff --exit-code
+        run: npm run lint && git diff --exit-code
+# to update actions: npx actions-up

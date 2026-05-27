@@ -20,8 +20,10 @@ async function ping(evt) {
     for (let i = 0; i < 4; ++i) {
       ++seqNum;
       // Construct an Interest with prefix + seqNum.
-      const interest = new Interest(prefix.append(`${seqNum}`),
-        Interest.MustBeFresh, Interest.Lifetime(1000));
+      const interest = new Interest(
+        prefix.append(`${seqNum}`),
+        Interest.MustBeFresh, Interest.Lifetime(1000),
+      );
       const t0 = Date.now();
       try {
         // Retrieve Data and compute round-trip time.
