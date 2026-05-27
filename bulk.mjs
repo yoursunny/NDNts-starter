@@ -14,9 +14,7 @@ for (let i = 0; i < 100; ++i) {
 }
 
 const t0 = Date.now();
-const settled = await Promise.allSettled(
-  interests.map((interest) => consume(interest, { retx: 5 })),
-);
+const settled = await Promise.allSettled(interests.map((interest) => consume(interest, { retx: 5 })));
 const t1 = Date.now();
 const nFulfilled = settled.filter(({ status }) => status === "fulfilled").length;
 console.log(`${nFulfilled} fulfilled in ${t1 - t0}ms`);
